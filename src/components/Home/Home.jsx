@@ -10,22 +10,24 @@ import ForwardRef from '../ForwardRef/ForwardRef.jsx'
 import Controlled from '../Controlled/Controlled.jsx'
 import UnControlled from '../UnControlled/UnControlled.jsx'
 import Hoc from '../HOC/Hoc.jsx'
+import ApiCall from '../ApiCall/ApiCall.jsx'
 
 
 function Home() {
   return (
     <>
       <Carousel />
-      <UseEffect />
+      {/* <UseEffect /> */}
       {/* <UseRef /> */}
       {/* <ForwardRef /> */}
       {/* <Controlled /> */}
       {/* <UnControlled /> */}
-      <Hoc />
+      {/* <Hoc /> */}
       {/* <UseEffectRevision /> */}
       {/* <UseMemo /> */}
-      <Data />
-      <Form />
+      {/* <Data /> */}
+      {/* <Form /> */}
+      <ApiCall />
     </>
   )
 }
