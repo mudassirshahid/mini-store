@@ -1,4 +1,7 @@
-//useMemo used for enhanced performance and controlled re rendering/check same rendering 
+// useMemo used for enhanced performance and controlled re rendering/check same rendering 
+// The React useMemo Hook returns a memorized value.
+// The React useCallback Hook returns a memorized callback function.
+
 import React,{useState, useMemo} from 'react'
 
 function UseMemo() {

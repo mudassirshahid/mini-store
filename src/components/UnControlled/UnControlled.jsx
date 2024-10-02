@@ -15,10 +15,10 @@ function UnControlled() {
         e.preventDefault()
         //Using Ref
         console.log(`Input Value one is: ${inputRef.current.value}`);
-        console.log(`Input Value one is: ${inputRef2.current.value}`);
+        console.log(`Input Value two is: ${inputRef2.current.value}`);
         //Using Variable/DOM/ID
         let input3 = document.getElementById("input3").value
-        console.log(`Input Value one is: ${input3}`);
+        console.log(`Input Value three is: ${input3}`);
     }
 
   return (

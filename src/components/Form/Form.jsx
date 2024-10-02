@@ -39,7 +39,7 @@ function MyForm() {
             </div>
             <div>
                 <label>Email:</label>
-                <input
+                <input  
                     type="email"
                     value={email}
                     onChange={handleEmailChange}

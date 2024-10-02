@@ -57,7 +57,7 @@ function UseEffect() {
               <ul>
                 {posts?.products?.map((post, index) => (
                   <li key={index} className="flex flex-col gap-3 justify-center text-center items-center border rounded-md p-2 my-5">
-                   <img src={post.images[0]} className="w-full h-auto"/>
+                   <img src={post.images[0]} className="w-32"/>
                     <p>ID: {post.id}</p>
                     <p>Title: {post.title}</p>
                     <p>Stock: {post.stock}</p>
