@@ -17,6 +17,8 @@ import Sale from "./components/Sale/Sale.jsx";
 import Blog from "./components/Blog/Blog.jsx";
 import { AppProvider } from "./components/UseContext/UseContext.jsx";
 import { ThemeProvider } from "./ThemeContext/ThemeContext.jsx";
+import { ProductProvider } from "./ProductContext.jsx/ProductContext.jsx";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
