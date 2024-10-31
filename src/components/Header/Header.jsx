@@ -10,6 +10,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { useProductContext } from '../../ProductContext.jsx/ProductContext';
 
 const products = [
   { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -29,7 +30,7 @@ function classNames(...classes) {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  
   return (
     <header className="bg-white">
       <nav className="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
@@ -124,6 +125,9 @@ export default function Header() {
           <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
             Log in <span aria-hidden="true">&rarr;</span>
           </a>
+          {/* <div href="#" className="text-2xl font-semibold leading-6 text-gray-900">
+            Cart <sup>{'3'}</sup>
+          </div> */}
         </div>
       </nav>
       <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -201,6 +205,9 @@ export default function Header() {
                 >
                   Log in
                 </a>
+                {/* <div href="#" className="text-2xl font-semibold leading-6 text-gray-900">
+            Cart <sup>{'3'}</sup>
+          </div> */}
               </div>
             </div>
           </div>

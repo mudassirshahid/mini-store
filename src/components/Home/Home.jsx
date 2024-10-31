@@ -1,4 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, lazy, Suspense } from 'react'
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+import "preline/preline";
+import { IStaticMethods } from "preline/preline";
 import Carousel from '../Utils/CustomCarousel'
 import Data from '../Data/Data.jsx'
 import Form from '../Form/Form.jsx'
@@ -18,13 +23,15 @@ import UseReducer from '../UseReducer/UseReducer.jsx'
 import UseLayoutEffect from '../UseLayoutEffect/UseLayoutEffect.jsx'
 import UserContext from '../UserContext/UserContext.jsx'
 import UseCallBack from '../UseCallBack/UseCallBack.jsx'
-
+import LazyLoading from '../LazyLoading/LazyLoading.jsx'
+import ProductList from '../ProductList/ProductList.jsx'
 
 function Home() {
   return (
     <>
-      <Carousel />
-      <UseCallBack />
+    <ProductList />
+      {/* <Carousel />
+      <UseCallBack /> */}
       {/* <UserContext /> */}
       {/* <UseLayoutEffect /> */}
       {/* <UseReducer /> */}
@@ -42,6 +49,7 @@ function Home() {
       {/* <Data /> */}
       {/* <Form /> */}
       {/* <ApiCall /> */}
+      {/* <LazyLoading /> */}
     </>
   )
 }

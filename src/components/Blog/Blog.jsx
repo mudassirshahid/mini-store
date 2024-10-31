@@ -2,9 +2,9 @@ import React from 'react'
 
 function Blog() {
   return (
-    <div>
-      Blog
-    </div>
+    <>
+      <h1 className='text-center text-4xl'>Blog</h1>
+    </>
   )
 }
 
