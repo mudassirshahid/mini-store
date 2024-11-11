@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
   ArrowPathIcon,
@@ -11,17 +11,18 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { useProductContext } from '../../ProductContext.jsx/ProductContext';
+import { Link, useNavigate } from 'react-router-dom';
 
 const products = [
-  { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
-  { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
-  { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
-  { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
-  { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  { name: 'Analytics', description: 'Get a better understanding of your traffic', to: '#', icon: ChartPieIcon },
+  { name: 'Engagement', description: 'Speak directly to your customers', to: '#', icon: CursorArrowRaysIcon },
+  { name: 'Security', description: 'Your customers’ data will be safe and secure', to: '#', icon: FingerPrintIcon },
+  { name: 'Integrations', description: 'Connect with third-party tools', to: '#', icon: SquaresPlusIcon },
+  { name: 'Automations', description: 'Build strategic funnels that will convert', to: '#', icon: ArrowPathIcon },
 ]
 const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  { name: 'Watch demo', to: '#', icon: PlayCircleIcon },
+  { name: 'Contact sales', to: '#', icon: PhoneIcon },
 ]
 
 function classNames(...classes) {
@@ -30,15 +31,27 @@ function classNames(...classes) {
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  const navigate = useNavigate();
+
+const handleLoginButton = () => {
+  if(localStorage.getItem('token')) {
+    navigate('/login')
+    localStorage.removeItem('token')
+  }
+}
+useEffect(() => {
+  handleLoginButton()
+},[])
   
   return (
     <header className="bg-white">
       <nav className="mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1 text-3xl font-sans font-medium">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link to="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             TechStore.
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -51,9 +64,16 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12">
+
+          <Link to="/" className="text-sm font-semibold leading-6 text-gray-900">
+            Home
+          </Link>
+          {/* <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
+            Services
+          </Link> */}
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm  leading-6 text-gray-900">
-              Product
+              Assets
               <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
             </Popover.Button>
 
@@ -77,10 +97,10 @@ export default function Header() {
                         <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                       </div>
                       <div className="flex-auto">
-                        <a href={item.href} className="block font-semibold text-gray-900">
+                        <Link to={item.to} className="block font-semibold text-gray-900">
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                         <p className="mt-1 text-gray-600">{item.description}</p>
                       </div>
                     </div>
@@ -88,44 +108,39 @@ export default function Header() {
                 </div>
                 <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
                   {callsToAction.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.to}
                       className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100"
                     >
                       <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </Popover.Panel>
             </Transition>
           </Popover>
-
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Home
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Services
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          <Link to="products" className="text-sm font-semibold leading-6 text-gray-900">
             Products
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link>
+          {/* <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
             Watches
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link> */}
+          {/* <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
             Sale
-          </a>
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
+          </Link> */}
+          {/* <Link to="#" className="text-sm font-semibold leading-6 text-gray-900">
             Blog
-          </a>
+          </Link> */}
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a href="#" className="text-sm font-semibold leading-6 text-gray-900">
-            Log in <span aria-hidden="true">&rarr;</span>
-          </a>
-          {/* <div href="#" className="text-2xl font-semibold leading-6 text-gray-900">
+          <Link to='login'>
+          <button className="text-sm font-semibold leading-6 text-gray-900" onClick={handleLoginButton}>
+           {localStorage.getItem('token') ? 'Log out' : "Log in"} <span aria-hidden="true">&rarr;</span>
+          </button>
+          </Link>
+          {/* <div to="#" className="text-2xl font-semibold leading-6 text-gray-900">
             Cart <sup>{'3'}</sup>
           </div> */}
         </div>
@@ -134,14 +149,14 @@ export default function Header() {
         <div className="fixed inset-0 z-10" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="#" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               />
-            </a>
+            </Link>
             <button
               type="button"
               className="-m-2.5 rounded-md p-2.5 text-gray-700"
@@ -158,7 +173,7 @@ export default function Header() {
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
-                        Product
+                        Assets
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
                           aria-hidden="true"
@@ -169,7 +184,7 @@ export default function Header() {
                           <Disclosure.Button
                             key={item.name}
                             as="a"
-                            href={item.href}
+                            to={item.to}
                             className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                           >
                             {item.name}
@@ -179,33 +194,32 @@ export default function Header() {
                     </>
                   )}
                 </Disclosure>
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Features
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Marketplace
-                </a>
-                <a
-                  href="#"
+                </Link>
+                <Link
+                  to="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Company
-                </a>
+                </Link>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </a>
-                {/* <div href="#" className="text-2xl font-semibold leading-6 text-gray-900">
+              <Link to='login'>
+          <button className="text-sm font-semibold leading-6 text-gray-900" onClick={handleLoginButton}>
+           {localStorage.getItem('token') ? 'Log out' : "Log in"} <span aria-hidden="true">&rarr;</span>
+          </button>
+          </Link>
+                {/* <div to="#" className="text-2xl font-semibold leading-6 text-gray-900">
             Cart <sup>{'3'}</sup>
           </div> */}
               </div>

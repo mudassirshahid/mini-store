@@ -1,9 +1,19 @@
-import React, { lazy, Suspense, useState } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 // import ProductCard from "./ProductCard";
 import CartList from "./CartList";
+import { useNavigate } from "react-router-dom";
 const ProductCard = lazy(() => import('./ProductCard'))
 
 const ProductList = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      navigate('/products')
+    } else {
+      navigate('/login')
+    }
+  },[])
+
   const [product, setProduct] = useState([
     {
       id: 1,
@@ -108,10 +118,16 @@ const ProductList = () => {
   const handleShow = (value) => {
     setShowCart(value)
   }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate('/login')
+  }
+
   return (
     <>
     <div className="flex flex-col gap-2 items-center">
-      <h2 onClick={() => handleShow(false)} className="text-2xl font-bold cursor-pointer  ">Products</h2>
+      <h2 onClick={() => handleShow(false)} className="text-2xl font-bold cursor-pointer">Products</h2>
       <div onClick={() => handleShow(true)} className="flex justify-center items-center text-xl gap-1 font-semibold leading-6 text-gray-900">
         <button className="bg-emerald-300 px-5 py-3 rounded">Cart <sup>{cart.length}</sup></button>
       </div>

@@ -5,6 +5,7 @@ import "./index.css";
 import {
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Route,
   RouterProvider,
 } from "react-router-dom";
@@ -18,6 +19,7 @@ import Blog from "./components/Blog/Blog.jsx";
 import { AppProvider } from "./components/UseContext/UseContext.jsx";
 import { ThemeProvider } from "./ThemeContext/ThemeContext.jsx";
 import { ProductProvider } from "./ProductContext.jsx/ProductContext.jsx";
+import LoginApi from "./components/LoginApiAxios/LoginApi.jsx";
 
 
 const router = createBrowserRouter(
@@ -25,10 +27,12 @@ const router = createBrowserRouter(
     <Route path="/" element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="services" element={<Services />} />
+      {/* <Route path="products" element={localStorage.getItem('token') ? <Products /> : <Navigate to="/login"  replace={true} />} /> */}
       <Route path="products" element={<Products />} />
       <Route path="watches" element={<Watches />} />
       <Route path="sale" element={<Sale />} />
       <Route path="blog" element={<Blog />} />
+      <Route path="login" element={<LoginApi />} />
     </Route>
   )
 );

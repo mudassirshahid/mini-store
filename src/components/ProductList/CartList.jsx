@@ -7,15 +7,6 @@ const CartList = ({ cart }) => {
     setCART(cart);
   }, [cart]);
 
-  const handleIncrease = () => {
-    const _CART = CART.map((item, index) => {
-      return cartIndex === index
-        ? { ...item, quantity: item.quantity + 1 }
-        : item;
-    });
-    setCART(_CART);
-  };
-
   return (
     <div>
       {CART?.map((cartItem, cartIndex) => {

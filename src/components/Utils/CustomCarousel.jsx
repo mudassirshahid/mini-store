@@ -13,25 +13,25 @@ function CustomCarousel() {
 
   return (
     <>
-    <AntCarousel autoplay autoplaySpeed={2500} infinite="false">
+    <AntCarousel autoplaySpeed={2500} infinite="false">
       <div className="bg-slate-200 px-10  h-auto">
         <div className="flex sm:flex-row flex-col justify-center items-center mx-auto">
-          <div className="w-[50%] lg:mt-0 mt-16">
-            <h3 className="2xl:text-8xl xl:text-7xl lg:text-5xl text-5xl font-light uppercase ">
+          <div className="sm:w-[50%] w-full sm:px-0 px-5 lg:mt-0 mt-16">
+            <h3 className="2xl:text-8xl xl:text-7xl lg:text-5xl text-4xl font-light uppercase ">
               Your Products Are Great.
             </h3>
-            <button className="bg-slate-800 text-slate-50 text-base font-normal my-10 px-12 py-4 uppercase">Shop Product</button>
+            <button className="bg-slate-800 text-slate-50 text-base font-normal sm:my-10 my-4 sm:px-12 px-7 py-4 uppercase">Shop Product</button>
           </div>
           <img className="lg:w-[40%] md:w-[50%] w-[60%]" src={bannerImg} alt="banner Iamge" />
         </div>
       </div>
       <div className="bg-slate-200 px-10  h-auto">
         <div className="flex sm:flex-row flex-col justify-center items-center mx-auto">
-          <div className="w-[50%] lg:mt-0 mt-16">
-            <h3 className="2xl:text-8xl xl:text-7xl lg:text-5xl text-5xl font-light uppercase ">
+          <div className="sm:w-[50%] w-full sm:px-0 px-5 lg:mt-0 mt-16">
+            <h3 className="2xl:text-8xl xl:text-7xl lg:text-5xl text-4xl font-light uppercase ">
               Your Products Are Great.
             </h3>
-            <button className="bg-slate-800 text-slate-50 text-base font-normal my-10 px-12 py-4 uppercase">Shop Product</button>
+            <button className="bg-slate-800 text-slate-50 text-base font-normal sm:my-10 my-4 sm:px-12 px-7 py-4 uppercase">Shop Product</button>
           </div>
           <img className="lg:w-[40%] md:w-[50%] w-[60%]" src={bannerImg} alt="banner Iamge" />
         </div>

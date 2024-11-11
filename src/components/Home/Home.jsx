@@ -25,13 +25,22 @@ import UserContext from '../UserContext/UserContext.jsx'
 import UseCallBack from '../UseCallBack/UseCallBack.jsx'
 import LazyLoading from '../LazyLoading/LazyLoading.jsx'
 import ProductList from '../ProductList/ProductList.jsx'
+import LoginApi from '../LoginApiAxios/LoginApi.jsx';
+import PrelineButton from '../PrelineComponents/PrelineButton.jsx';
+import PrelineCard from '../PrelineComponents/PrelineCard.jsx';
 
 function Home() {
+  useEffect(() => {
+    import("preline");
+  }, []);
   return (
     <>
-    <ProductList />
-      {/* <Carousel />
-      <UseCallBack /> */}
+    {/* <PrelineButton /> */}
+    {/* <PrelineCard /> */}
+    <LoginApi />
+    {/* <ProductList /> */}
+       {/* <Carousel /> */}
+      {/*<UseCallBack /> */}
       {/* <UserContext /> */}
       {/* <UseLayoutEffect /> */}
       {/* <UseReducer /> */}
