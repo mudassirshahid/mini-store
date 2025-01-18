@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 
 function Controlled() {
     const [val, setVal] = useState("");
-    const [item, setItem] = useState()
+    const [item, setItem] = useState("")
 
     const handleVal = (e) => {
         setVal(e.target.value)

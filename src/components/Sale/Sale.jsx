@@ -2,7 +2,7 @@ import React from 'react'
 
 function Sale() {
   return (
-    <div>
+    <div className='text-2xl'>
       Sale
     </div>
   )

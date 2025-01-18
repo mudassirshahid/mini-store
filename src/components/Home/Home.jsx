@@ -28,16 +28,17 @@ import ProductList from '../ProductList/ProductList.jsx'
 import LoginApi from '../LoginApiAxios/LoginApi.jsx';
 import PrelineButton from '../PrelineComponents/PrelineButton.jsx';
 import PrelineCard from '../PrelineComponents/PrelineCard.jsx';
+import FormValidation from '../FormValidation/FormValidation.jsx';
 
 function Home() {
-  useEffect(() => {
-    import("preline");
-  }, []);
+  // useEffect(() => {
+  //   import("preline");
+  // }, []);
   return (
     <>
     {/* <PrelineButton /> */}
     {/* <PrelineCard /> */}
-    <LoginApi />
+    {/* <LoginApi /> */}
     {/* <ProductList /> */}
        {/* <Carousel /> */}
       {/*<UseCallBack /> */}
@@ -59,6 +60,7 @@ function Home() {
       {/* <Form /> */}
       {/* <ApiCall /> */}
       {/* <LazyLoading /> */}
+      <FormValidation />
     </>
   )
 }

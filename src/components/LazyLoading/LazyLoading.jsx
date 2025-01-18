@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react'
 // import FormData from '../FormData/FormData'
 const FormData = lazy(() => import('../FormData/FormData'))  // In lazy load if you want to add lazy loading on component Import component like this
 const Blog = lazy(() => import('../Blog/Blog'))  // In lazy load if you want to add lazy loading on component Import component like this
-
+const Sale =lazy(() => import('../Sale/Sale'))
 const LazyLoading = () => {
   return (
     <>
@@ -14,6 +14,10 @@ const LazyLoading = () => {
       <Suspense fallback={<div>Please Wait Blog is Loading...</div>}>
       <Blog />
       </Suspense> 
+      <Suspense fallback={"please wait"}>
+        <Sale />
+      </Suspense>
+      
     </>
   )
 }
